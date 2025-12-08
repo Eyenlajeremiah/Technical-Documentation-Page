@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Technical Documentation Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <nav id="navbar">
+      <header><h1>React Documentation</h1></header>
+      
+        <a class="nav-link" href="#Introduction">Introduction</a></option>
+        <a class="nav-link" href="#What_you_should_already_know">What you should already know</a></option>
+      <a class="nav-link" href="#React_and_Angula">React and Angula</a>
+      <a class="nav-link" href="#Hello_World">Hello World</a>
+      <a class="nav-link" href="#Variable">Variable</a>
+      <a class="nav-link" href="#Declaring_Variable">Declaring Variable</a>
+      <a class="nav-link" href="#Variable_scope">Variable scope</a>
+      <a class="nav-link" href="#Global_Variables">Global Variables</a>
+      <a class="nav-link" href="#Constant">Constant</a>
+      <a class="nav-link" href="#Data_Types">Data Types</a>
+      <a class="nav-link" href="#If_Else_Statement">If Else Statement</a>
+      </select>
+    </nav>
+  <main id="main-doc">
+    <section class="main-section" id="Introduction">
+      <header>Introduction</header>
+      <p>React is a JavaScript library (not a framework) developed by Facebook for building user interfaces. It is used to build single-page applications where the focus is on creating reusable UI components.</p>
+      <ul>
+        <li><span>Component-Based:</span> You build small, self-contained pieces of code (components) like buttons or headers, and merge them to create complex UIs.</li>
+        <li><span>Virtual DOM:</span> React creates a lightweight copy of the DOM in memory. When data changes, it updates the Virtual DOM first, compares it to the previous version, and only updates the specific parts of the real DOM that changed. This makes it very fast.</li>
+      </ul>
+      <p>Furthermore, React adopts a declarative approach to coding. In traditional JavaScript, you have to manually tell the browser exactly how to update the page step-by-step (e.g., "find this div, remove this class, add this text"). In React, you simply describe what the UI should look like based on the current data, and React handles the technical details of updating the browser to match that description. This makes your code more predictable and easier to debug. Learning React also opens doors beyond the web; because of its architecture, you can use React Native to build mobile apps for iOS and Android using the exact same concepts.</p>
+    </section>
+    <section class="main-section" id="What_you_should_already_know">
+      <header>What you should already know</header>
+      <p>Before diving into React, you should have a solid grasp of:</p>
+      <ul>
+        <li><span>HTML & CSS:</span> The structure and styling of web pages</li>
+        <li><span>Modern JavaScript (ES6+):</span> Specifically Arrow Functions, Destructuring, Classes, and Modules.</li>
+        <li><span>The DOM:</span> Understanding how the Document Object Model works in a standard browser.</li>
+      </ul>
+    </section>
+    <section class="main-section" id="React_and_Angula">
+      <header>React and Angula</header>
+      <p>Both are powerful tools for frontend development, but they have distinct philosophies:</p>
+      <table>
+        <thead>
+          <tr>
+            <td>Feature</td>
+            <td>React</td>
+            <td>Angula</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Type</th>
+            <td>Library (Focuses only on the View layer)</td>
+            <td>Framework (A complete solution)</td>
+          </tr>
+          <tr>
+            <th>Language</th>
+            <td>JavaScript (JSX)</td>
+            <td>TypeScript</td>
+          </tr>
+          <tr>
+            <th>Learning Curve</th>
+            <td>Moderate (Easy to start, harder to master ecosystem)</td>
+            <td>Steep (Many built-in concepts to learn)</td>
+          </tr>
+          <tr>
+            <th>Data Binding</th>
+            <td>One-way (Parent to Child)</td>
+            <td>Two-way (Model and View sync automatically)</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Code Comparison: The "Counter" Example</h4>
+      <h4>1. React Implementation</h4>
+      <p>React uses <span>Functions</span> and <span>Hooks</span> to handle logic. The HTML (JSX) is written directly inside the JavaScript function.</p>
+      <pre><code class="language-javascript">// React: Counter.js
+import React, { useState } from 'react';
+
+function Counter() {
+  // 1. Define State (Variable)
+  const [count, setCount] = useState(0);
+
+  // 2. Define Behavior
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  // 3. Return View (JSX)
+  return (
+    <div>
+      <p>Current Count: {count}</p>
+      {/* Event binding uses camelCase (onClick) */}
+      <button onClick={increment}>Add +1</button>
+    </div>
+  );
+}
+
+export default Counter;</code></pre>
+    <h4>2. Angula Implementation</h4>
+    <p>Angular uses <span>Classes</span> and <span>Decorators</span> (@Component). It separates the logic (TypeScript) from the view (HTML) more distinctly.</p>
+
+    <pre><code class="language-javascript">// Angular: counter.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-counter',
+  template: `
+    <div>
+      <p>Current Count: {{ count }}</p>
+      <button (click)="increment()">Add +1</button>
+    </div>
+  `
+})
+export class CounterComponent {
+  // 1. Define State (Class Property)
+  count: number = 0;
+
+  // 2. Define Behavior (Method)
+  increment() {
+    this.count++; 
+  }
+}</code></pre>
+      <h4>Key Differences to Note:</h4>
+      <ul>
+        <li><span>State:</span> React uses the <code>useState</code> hook (<code>const [count, setCount]...</code>), whereas Angular simply uses a class property <code>(count = 0).</code></li>
+        <li><span>HTML:</span> React puts HTML (JSX) inside the function. Angular usually puts HTML in a separate file (though we used an inline template above for brevity).</li>
+        <li><span>Clicks:</span> React uses <span>onClick={...}</span> while Angular uses <code>(click)="..."</code>.</li>
+      </ul>
+      
+    </section>
+    <section class="main-section" id="Hello_World">
+      <header>Hello World</header>
+      <p>In React, a "Hello World" is usually a Functional Component. This is a JavaScript function that returns HTML (written in a syntax called JSX).</p>
+      
+      <pre><code class="language-javascript">
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+// This is a Component
+function HelloWorld() {
+  return (
+    &ltdiv&gt
+      &lth1&gtHello, World&lt/h1&gt
+    &lt/div&gt
+  );
+}
+
+// Rendering the component to the HTML file
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<HelloWorld />);
+      </code></pre>
+      
+    </section>
+    <section class="main-section" id="Variable">
+      <header>Variable</header>
+      <p>In React, "variables" often act differently depending on whether they are static values or <span>State</span>.</p>
+      <ul>
+        <li><span>Standard Variables:</span> Used for values that don't need to trigger a re-render of the screen (e.g., calculating a math problem inside a function).</li>
+        <li><span>State Variables</span> (<code class="language-javascript">useState</code>): Special React variables that, when changed, tell React to update the screen.</li>
+      </ul>
+      
+      
+    </section>
+    <section class="main-section" id="Declaring_Variable">
+      <header>Declaring Variable</header>
+      <p>Modern React (and JavaScript) moves away from <code class="language-javascript">var</code> and uses <code class="language-javascript">let</code> and <code class="language-javascript">const</code>.</p>
+      <p></p>
+      <pre><code class="language-javascript">
+        function UserProfile() {
+  // 'let' is used if the value will be reassigned later
+  let username = "Guest"; 
+  
+  // React State (The React way of holding dynamic data)
+  const [isActive, setIsActive] = React.useState(true);
+
+  return &lth1&gtWelcome, {username}&lt/h1&gt;
+}
+      </code></pre>
+      
+    </section>
+    <section class="main-section" id="Variable_scope">
+     <header>Variable scope</header>
+      <p>Scope determines where your variables can be accessed.</p>
+      <ul>
+        <li><span>Block Scope:</span> Variables declared with <code class="language-javascript">let</code> and <code class="language-javascript">const</code> inside <code class="language-javascript">{ curly braces }</code> (like inside an if statement or a loop) only exist inside those braces.</li>
+        <li><span>Component Scope:</span> Variables defined inside a component function (like <code class="language-javascript">UserProfile</code> above) are created every time the component renders and are not accessible outside that component.</li>
+      </ul>
+    </section>
+    <section class="main-section" id="Global_Variables">
+      <header>Global variables</header>
+      <p><span>Avoid using global variables in React.</span> Because React components are meant to be reusable and isolated, relying on global variables can break your app and cause unexpected bugs.</p>
+      <ul>
+        <li><span>Instead of Global Variables:</span> Use <span>Props</span> to pass data down from parent to child, or use <span>Context API / Redux</span> for managing state across the whole application.<li>
+      </ul>
+    </section>
+    <section class="main-section" id="Constant">
+      <header>Constant</header>
+      <p>Use const for values that should not be reassigned. In React, you use const for:</p>
+      <ol>
+        <li><span>Defining Components:</span> <code class="language-javascript">const MyComponent = () => { ... }</code></li>
+        <li><span>Importing Libraries:</span> <code class="language-javascript">const React = require('react');</code></li>
+        <li><span>State Hooks:</span> The state setter is a constant reference.</li>
+      </ol>
+      <pre><code class="language-javascript">
+const API_URL = "https://api.example.com"; // This value will never change
+      </code></pre>
+    </section>
+    <section class="main-section" id="Data_Types">
+      <header>Data Types</header>
+      <p>React handles all standard JavaScript data types, but treats them specifically in <span>JSX</span>:</p>
+      <ul>
+        <li><span>String/Number:</span> Rendered directly. <code class="language-javascript">&ltdiv&gt{10}&lt/div&gt</code> displays "10".</li>
+        <li><span>Boolean/Null/Undefined:</span> valid, but do not render anything on the screen. (Useful for conditional logic).</li>
+        <li><span>Arrays:<span> React can render lists of items stored in arrays using .<code class="language-javascript">map()</code>.</li>
+        <li><span>Objects:</span> You cannot render an object directly (e.g., <code class="language-javascript">&ltdiv&gt{userObject}&lt/div&gt</code> will crash). You must render a specific property: <code class="language-javascript">&ltdiv&gt{userObject.name}&lt/div&gt</code>.</li>
+      </ul>
+    </section>
+    <section class="main-section" id="If_Else_Statement">
+      <header>If Else Statement</header>
+      <p>You cannot use a standard <code class="language-javascript">if else</code> statement <span>inside</span> the JSX return block. Instead, you use:</p>
+      <ol>
+        <li><span>Ternary Operations (inside JSX):</span>
+        <pre><code class="language-javascript">
+function Greeting({ isLoggedIn }) {
+  return (
+    &ltdiv&gt
+      {isLoggedIn ? &lth1&gtWelcome back!&lt/h1&gt : &ltbutton&gtLog In&lt/button&gt}
+    &lt/div&gt
+  );
+}
+        </code></pre>
+
+        </li>
+        <li><span>Standard if/else (Outside JSX):</span> You can use standard if logic before the return statement to decide what component to render.
+        <pre>
+          <code class="language-javascript">
+function StatusMessage({ status }) {
+  if (status === 'success') {
+    return &lth1 style={{color: 'green'}}&gtSuccess!&lt/h1&gt;
+  } else {
+    return &lth1 style={{color: 'red'}}&gtError!&lt/h1&gt;
+  }
+}
+          </code>
+
+        </pre>
+        </li>
+      <ol>
+    </section>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  </body>
+</html>

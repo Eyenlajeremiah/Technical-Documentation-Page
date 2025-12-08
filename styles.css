@@ -1,0 +1,78 @@
+body {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.125em;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /*position: absolute;*/
+  
+}
+span {
+  font-weight: 700;
+}
+table {
+  background-color: rgb(224, 217, 217);
+  text-align: left;
+  padding: 1rem;
+  border-radius: 5px;
+}
+tr {
+  padding: 5rem;
+  border-bottom: 3px solid black;
+}
+pre[class*="language-"] {
+  max-width: 800px; 
+  margin: 20px auto; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+}
+
+#navbar {
+  display: inline-block;
+  width: 33vw;
+  height: 100vh;
+  margin: rem;
+  border-right: 5px solid grey;
+  position: fixed;
+  overflow-y: auto;
+
+
+}
+header {
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+#navbar header {
+  margin-left: 2rem;
+  margin-right: 0rem;
+  font-size: calc(14px + 0.3vw);
+  border-bottom: 1px solid grey;
+
+}
+#main-doc {
+  width: 60vw;
+  float: right;
+  margin: 1rem;
+
+}
+.nav-link {
+  text-decoration: none;
+  color: rgb(37, 19, 19);
+  margin: 2rem;
+  display: block;
+  border-bottom: 1px solid grey;
+  
+}
+@media screen and (min-width:900px){
+  .navbar {
+    width: 30vw;
+    margin: 0;
+  }
+  body {
+    font-size: 1.125rem;
+  .main-docs {
+    margin: 0;
+  }
+  }
+}
